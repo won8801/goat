@@ -1,175 +1,303 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>GOAT | 광고문자 플랫폼</title>
-<style>
-  body {
-    margin: 0;
-    background-color: #111;
-    font-family: 'Segoe UI', sans-serif;
-    color: #f0f0f0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    text-align: center;
-    flex-direction: column;
-    padding: 20px;
-  }
-
-  .logo {
-    width: 80px;
-    height: 80px;
-    background-color: #ffd700;
-    border-radius: 20px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 28px;
-    font-weight: bold;
-    color: #111;
-  }
-
-  h1 {
-    font-size: 36px;
-    color: #ffd700;
-    margin-bottom: 10px;
-  }
-
-  p {
-    font-size: 18px;
-    color: #ccc;
-    margin-bottom: 30px;
-  }
-
-  .button-group {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
-    max-width: 320px;
-  }
-
-  .button-group a {
-    text-decoration: none;
-  }
-
-  .button-group button {
-    padding: 14px 20px;
-    border: none;
-    border-radius: 999px;
-    font-size: 16px;
-    font-weight: bold;
-    background: #ffd700;
-    color: #111;
-    cursor: pointer;
-    transition: background 0.3s;
-    width: 100%;
-  }
-
-  .button-group button:hover {
-    background: #e6c200;
-  }
-
-  @media (max-width: 600px) {
-    h1 {
-      font-size: 28px;
+  <meta charset="UTF-8" />
+  <title>3사 테스트</title>
+  <style>
+    body {
+      font-family: 'Apple SD Gothic Neo', 'Segoe UI', sans-serif;
+      padding: 2rem;
+      background-color: #f9f9f9;
+      box-sizing: border-box;
     }
-    p {
-      font-size: 16px;
+
+    .input-wrapper {
+      background: white;
+      border-radius: 20px;
+      padding: 1rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 0.5rem;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
     }
-  }
-</style>
+
+    textarea {
+      width: 100%;
+      border: none;
+      resize: none;
+      outline: none;
+      font-size: 15px;
+      line-height: 1.5;
+      border-radius: 10px;
+      padding: 1rem;
+      background: #f0f0f0;
+      min-height: 120px;
+      box-sizing: border-box;
+    }
+
+    .byte-counter {
+      max-width: 400px;
+      margin: 0 auto 1rem auto;
+      font-size: 13px;
+      text-align: right;
+      color: #555;
+    }
+
+    button {
+      display: block;
+      margin: 0 auto;
+      padding: 0.6rem 1.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      background-color: #007aff;
+      color: white;
+      border: none;
+      border-radius: 20px;
+    }
+
+    button:disabled {
+      background-color: #aaa;
+      cursor: not-allowed;
+    }
+
+    .results {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .carrier {
+      font-weight: bold;
+      margin: 0.5rem;
+      flex: 1 1 30%;
+      text-align: center;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+    }
+
+    .success {
+      background: #d4edda;
+      color: #155724;
+    }
+
+    .fail {
+      background: #f8d7da;
+      color: #721c24;
+    }
+
+    .pending {
+      background: #fff3cd;
+      color: #856404;
+    }
+
+    .log-box {
+      margin-top: 2rem;
+      padding: 1rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .log-box h3 {
+      margin-top: 0;
+    }
+
+    .log-entry {
+      border-bottom: 1px solid #eee;
+      padding: 0.5rem 0;
+    }
+
+    .log-entry .message {
+      font-weight: bold;
+      margin-bottom: 0.4rem;
+    }
+
+    .log-entry .results {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      gap: 10px;
+    }
+
+    .log-status {
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      font-weight: bold;
+      flex: 1 1 30%;
+      text-align: center;
+    }
+
+    @media (max-width: 480px) {
+      textarea {
+        font-size: 14px;
+        padding: 0.8rem;
+        min-height: 100px;
+      }
+
+      button {
+        width: 100%;
+      }
+
+      .results {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .log-entry .results {
+        flex-direction: column;
+        gap: 6px;
+      }
+    }
+  </style>
 </head>
 <body>
-<div class="logo">🐐</div>
-<h1>메시징의 GOAT</h1>
-<p>원활한 상담을 위해 다음 내용을 입력해주세요.</p>
+  <h1 style="text-align:center;">📲 3사 테스트</h1>
 
-<form id="contact-form" style="margin-top: 30px; max-width: 400px; width: 100%;">
-  <div style="margin-bottom: 30px;">
-    <select id="country" required style="width: 100%; padding: 10px; border-radius: 8px; border: none;">
-      <option value="">국가를 선택하세요</option>
-      <option value="한국 🇰🇷">🇰🇷 한국</option>
-      <option value="중국 🇨🇳">🇨🇳 중국</option>
-      <option value="일본 🇯🇵">🇯🇵 일본</option>
-      <option value="미국 🇺🇸">🇺🇸 미국</option>
-      <option value="기타 🌐">🌐 다른 국가</option>
-    </select>
+  <div class="input-wrapper">
+    <textarea id="message" placeholder="메시지를 입력하세요..."></textarea>
   </div>
-  <div style="margin-bottom: 30px;">
-    <select id="contentType" required style="width: 100%; padding: 10px; border-radius: 8px; border: none;">
-      <option value="">콘텐츠를 선택하세요</option>
-      <option value="제테크">제테크</option>
-      <option value="게임">게임</option>
-      <option value="성인">성인</option>
-      <option value="대출">대출</option>
-      <option value="기타">기타</option>
-    </select>
-  </div>
-  <div style="margin-bottom: 30px;">
-    <select id="monthlyVolume" required style="width: 100%; padding: 10px; border-radius: 8px; border: none;">
-      <option value="">한 달 발송량을 선택하세요</option>
-      <option value="1,000,000건 이하">1,000,000건 이하</option>
-      <option value="5,000,000건 이하">5,000,000건 이하</option>
-      <option value="10,000,000건 이하">10,000,000건 이하</option>
-      <option value="기타">기타</option>
-    </select>
+  <div class="byte-counter" id="byteCount">0 / 140</div>
+  <button id="testBtn" onclick="startTest()">발송하기</button>
+
+  <div class="results" id="results">
+    <div class="carrier">SK: <span id="skStatus" class="status pending">대기 중...</span></div>
+    <div class="carrier">KT: <span id="ktStatus" class="status pending">대기 중...</span></div>
+    <div class="carrier">LG: <span id="lgStatus" class="status pending">대기 중...</span></div>
   </div>
 
-  <!-- 📞 연락처 입력란 추가 -->
-  <input
-    id="contactInfo"
-    type="text"
-    placeholder="연락 받으실 곳을 남겨주세요"
-    required
-    style="width: 100%; padding: 10px; border-radius: 8px; border: none; margin-bottom: 30px;"
-  />
+  <div class="log-box">
+    <h3>📜 이전 통신 결과</h3>
+    <div id="log"></div>
+  </div>
 
-  <textarea id="userMessage" placeholder="문의 내용을 입력해주세요" required style="width: 100%; height: 150px; padding: 10px; border-radius: 8px; border: none; margin-bottom: 30px;"></textarea>
+  <script>
+    const API_URL = 'https://sms-backend-t9vy.onrender.com/api/send-sms';
 
-  <button type="submit" style="width: 100%; padding: 12px; border-radius: 999px; border: none; background-color: #ffd700; font-weight: bold; cursor: pointer;">
-    텔레그램 1:1 상담 <img alt="Telegram" height="20" src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" style="vertical-align: middle; margin-left: 8px;" width="20"/>
-  </button>
-</form>
+    const MAX_BYTES = 140;
 
-<script>
-  document.getElementById("contact-form").addEventListener("submit", function(e) {
-    e.preventDefault();
+    const phoneMap = {
+      sk: '01011112222',
+      kt: '01033334444',
+      lg: '01055556666'
+    };
 
-    const country = document.getElementById("country").value;
-    const volume = document.getElementById("monthlyVolume").value;
-    const content = document.getElementById("contentType").value;
-    const contact = document.getElementById("contactInfo").value;
-    const message = document.getElementById("userMessage").value;
+    const labelMap = {
+      sk: 'SK',
+      kt: 'KT',
+      lg: 'LG'
+    };
 
-    const text = `📬 [GOAT 문의]\n[국가] ${country}\n[발송량] ${volume}\n[콘텐츠] ${content}\n[연락처] ${contact}\n[문의내용]\n${message}`;
+    const messageInput = document.getElementById('message');
+    const byteCounter = document.getElementById('byteCount');
+    const testButton = document.getElementById('testBtn');
+    const logBox = document.getElementById('log');
 
-    const botToken = "7870847386:AAEtstbOOXzFJTj9PIIr2nV434l8oEb1FfE";
-    const chatId = "6488147554";
-    const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+    function getByteLength(str) {
+      return new TextEncoder().encode(str).length;
+    }
 
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        chat_id: chatId,
-        text: text
-      })
-    })
-    .then(() => {
-      alert("메시지가 전송되었습니다.");
-      document.getElementById("contact-form").reset();
-    })
-    .catch(() => {
-      alert("전송 실패. 텔레그램 봇 토큰 또는 chat_id를 다시 확인해보세요.");
+    messageInput.addEventListener('input', () => {
+      const currentText = messageInput.value;
+      const byteLength = getByteLength(currentText);
+      byteCounter.textContent = `${byteLength} / ${MAX_BYTES}`;
+      testButton.disabled = byteLength === 0 || byteLength > MAX_BYTES;
     });
-  });
-</script>
+
+    function setStatus(carrier, status, text) {
+      const el = document.getElementById(`${carrier}Status`);
+      el.textContent = text;
+      el.className = `status ${status}`;
+    }
+
+    function appendToLog(statusMap, messageText) {
+      const timestamp = new Date().toLocaleTimeString();
+      const div = document.createElement('div');
+      div.className = 'log-entry';
+      div.innerHTML = `
+        <div class="message">🕒 ${timestamp} - "${messageText}"</div>
+        <div class="results">
+          <div class="log-status ${statusMap.sk}">SK: ${statusMap.sk.toUpperCase()}</div>
+          <div class="log-status ${statusMap.kt}">KT: ${statusMap.kt.toUpperCase()}</div>
+          <div class="log-status ${statusMap.lg}">LG: ${statusMap.lg.toUpperCase()}</div>
+        </div>
+      `;
+      logBox.prepend(div);
+    }
+
+    function sendSMS(carrier, message) {
+      return new Promise((resolve, reject) => {
+        const payload = {
+          appkey: 'JdkwtQ',
+          appsecret: 'txUzqH',
+          appcode: '1000',
+          to: phoneMap[carrier],
+          message
+        };
+
+        const controller = new AbortController();
+        const timeout = setTimeout(() => {
+          controller.abort();
+          reject('timeout');
+        }, 45000);
+
+        fetch(API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+          signal: controller.signal
+        })
+        .then(response => {
+          clearTimeout(timeout);
+          if (response.ok) resolve();
+          else reject('server error');
+        })
+        .catch(err => {
+          clearTimeout(timeout);
+          reject(err.name === 'AbortError' ? 'timeout' : 'network error');
+        });
+      });
+    }
+
+    function startTest() {
+      const msg = messageInput.value.trim();
+      if (!msg || getByteLength(msg) > MAX_BYTES) {
+        alert('메시지 입력 오류 또는 140바이트 초과입니다.');
+        return;
+      }
+
+      const statusMap = { sk: '', kt: '', lg: '' };
+
+      ['sk', 'kt', 'lg'].forEach(carrier => {
+        setStatus(carrier, 'pending', '전송 중...');
+        sendSMS(carrier, msg)
+          .then(() => {
+            setStatus(carrier, 'success', `${labelMap[carrier]} 통신 성공 ✅`);
+            statusMap[carrier] = 'success';
+          })
+          .catch(reason => {
+            const text = reason === 'timeout' ? '응답 없음 ❌' : '실패 ❌';
+            setStatus(carrier, 'fail', `${labelMap[carrier]} ${text}`);
+            statusMap[carrier] = 'fail';
+          })
+          .finally(() => {
+            if (Object.values(statusMap).every(s => s)) {
+              appendToLog(statusMap, msg);
+            }
+          });
+      });
+    }
+  </script>
 </body>
 </html>
