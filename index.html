@@ -1,149 +1,174 @@
-
 <!DOCTYPE html>
-
 <html lang="ko">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>GOAT | 광고문자 플랫폼</title>
 <style>
-    body {
-      margin: 0;
-      background-color: #111;
-      font-family: 'Segoe UI', sans-serif;
-      color: #f0f0f0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      text-align: center;
-      flex-direction: column;
-      padding: 20px;
-    }
+  body {
+    margin: 0;
+    background-color: #111;
+    font-family: 'Segoe UI', sans-serif;
+    color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    flex-direction: column;
+    padding: 20px;
+  }
 
-    .logo {
-      width: 80px;
-      height: 80px;
-      background-color: #ffd700;
-      border-radius: 20px;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      font-weight: bold;
-      color: #111;
-    }
+  .logo {
+    width: 80px;
+    height: 80px;
+    background-color: #ffd700;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: bold;
+    color: #111;
+  }
 
+  h1 {
+    font-size: 36px;
+    color: #ffd700;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 18px;
+    color: #ccc;
+    margin-bottom: 30px;
+  }
+
+  .button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .button-group a {
+    text-decoration: none;
+  }
+
+  .button-group button {
+    padding: 14px 20px;
+    border: none;
+    border-radius: 999px;
+    font-size: 16px;
+    font-weight: bold;
+    background: #ffd700;
+    color: #111;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 100%;
+  }
+
+  .button-group button:hover {
+    background: #e6c200;
+  }
+
+  @media (max-width: 600px) {
     h1 {
-      font-size: 36px;
-      color: #ffd700;
-      margin-bottom: 10px;
+      font-size: 28px;
     }
-
     p {
-      font-size: 18px;
-      color: #ccc;
-      margin-bottom: 30px;
-    }
-
-    .button-group {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      width: 100%;
-      max-width: 320px;
-    }
-
-    .button-group a {
-      text-decoration: none;
-    }
-
-    .button-group button {
-      padding: 14px 20px;
-      border: none;
-      border-radius: 999px;
       font-size: 16px;
-      font-weight: bold;
-      background: #ffd700;
-      color: #111;
-      cursor: pointer;
-      transition: background 0.3s;
-      width: 100%;
     }
-
-    .button-group button:hover {
-      background: #e6c200;
-    }
-
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 28px;
-      }
-      p {
-        font-size: 16px;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
 <div class="logo">🐐</div>
 <h1>메시징의 GOAT</h1>
 <p>원활한 상담을 위해 다음 내용을 입력해주세요.</p>
 
-<form id="contact-form" style="margin-top: 30px; max-width: 400px; width: 100%;"><div style="margin-bottom: 30px;">
-<select id="country" required="" style="width: 100%; padding: 10px; border-radius: 8px; border: none;">
-<option value="">국가를 선택하세요</option>
-<option value="한국 🇰🇷">🇰🇷 한국</option>
-<option value="중국 🇨🇳">🇨🇳 중국</option>
-<option value="일본 🇯🇵">🇯🇵 일본</option>
-<option value="미국 🇺🇸">🇺🇸 미국</option>
-<option value="기타 🌐">🌐 다른 국가</option></select>
-</div><div style="margin-bottom: 30px;">
-<select id="contentType" required="" style="width: 100%; padding: 10px; border-radius: 8px; border: none;">
-<option value="">콘텐츠를 선택하세요</option>
-<option value="제테크">제테크</option>
-<option value="게임">게임</option>
-<option value="성인">성인</option>
-<option value="대출">대출</option>
-<option value="기타">기타</option>
-</select>
-</div><div style="margin-bottom: 30px;">
-<select id="monthlyVolume" required="" style="width: 100%; padding: 10px; border-radius: 8px; border: none;">
-<option value="">한 달 발송량을 선택하세요</option>
-<option value="1,000,000건 이하">1,000,000건 이하</option>
-<option value="5,000,000건 이하">5,000,000건 이하</option>
-<option value="10,000,000건 이하">10,000,000건 이하</option>
-<option value="기타">기타</option>
-</select>
-</div>
-<textarea id="userMessage" placeholder="문의 내용을 입력해주세요" required="True" style="width: 100%; height: 150px; padding: 10px; border-radius: 8px; border: none; margin-bottom: 30px;"></textarea>
-<button style="width: 100%; padding: 12px; border-radius: 999px; border: none; background-color: #ffd700; font-weight: bold; cursor: pointer;" type="submit">텔레그램 1:1 상담 <img alt="Telegram" height="20" src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" style="vertical-align: middle; margin-left: 8px;" width="20"/></button></form>
+<form id="contact-form" style="margin-top: 30px; max-width: 400px; width: 100%;">
+  <div style="margin-bottom: 30px;">
+    <select id="country" required style="width: 100%; padding: 10px; border-radius: 8px; border: none;">
+      <option value="">국가를 선택하세요</option>
+      <option value="한국 🇰🇷">🇰🇷 한국</option>
+      <option value="중국 🇨🇳">🇨🇳 중국</option>
+      <option value="일본 🇯🇵">🇯🇵 일본</option>
+      <option value="미국 🇺🇸">🇺🇸 미국</option>
+      <option value="기타 🌐">🌐 다른 국가</option>
+    </select>
+  </div>
+  <div style="margin-bottom: 30px;">
+    <select id="contentType" required style="width: 100%; padding: 10px; border-radius: 8px; border: none;">
+      <option value="">콘텐츠를 선택하세요</option>
+      <option value="제테크">제테크</option>
+      <option value="게임">게임</option>
+      <option value="성인">성인</option>
+      <option value="대출">대출</option>
+      <option value="기타">기타</option>
+    </select>
+  </div>
+  <div style="margin-bottom: 30px;">
+    <select id="monthlyVolume" required style="width: 100%; padding: 10px; border-radius: 8px; border: none;">
+      <option value="">한 달 발송량을 선택하세요</option>
+      <option value="1,000,000건 이하">1,000,000건 이하</option>
+      <option value="5,000,000건 이하">5,000,000건 이하</option>
+      <option value="10,000,000건 이하">10,000,000건 이하</option>
+      <option value="기타">기타</option>
+    </select>
+  </div>
+
+  <!-- 📞 연락처 입력란 추가 -->
+  <input
+    id="contactInfo"
+    type="text"
+    placeholder="연락 받으실 곳을 남겨주세요"
+    required
+    style="width: 100%; padding: 10px; border-radius: 8px; border: none; margin-bottom: 30px;"
+  />
+
+  <textarea id="userMessage" placeholder="문의 내용을 입력해주세요" required style="width: 100%; height: 150px; padding: 10px; border-radius: 8px; border: none; margin-bottom: 30px;"></textarea>
+
+  <button type="submit" style="width: 100%; padding: 12px; border-radius: 999px; border: none; background-color: #ffd700; font-weight: bold; cursor: pointer;">
+    텔레그램 1:1 상담 <img alt="Telegram" height="20" src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" style="vertical-align: middle; margin-left: 8px;" width="20"/>
+  </button>
+</form>
+
 <script>
   document.getElementById("contact-form").addEventListener("submit", function(e) {
     e.preventDefault();
+
     const country = document.getElementById("country").value;
     const volume = document.getElementById("monthlyVolume").value;
     const content = document.getElementById("contentType").value;
+    const contact = document.getElementById("contactInfo").value;
     const message = document.getElementById("userMessage").value;
-    const text = `[국가: ${country}]\n[한 달 발송량: ${volume}]\n[콘텐츠: ${content}]\n${message}`;
 
-    fetch("https://api.telegram.org/bot7870847386:AAEtstbOOXzFJTj9PIIr2nV434l8oEb1FfE/sendMessage", {
+    const text = `📬 [GOAT 문의]\n[국가] ${country}\n[발송량] ${volume}\n[콘텐츠] ${content}\n[연락처] ${contact}\n[문의내용]\n${message}`;
+
+    const botToken = "7870847386:AAEtstbOOXzFJTj9PIIr2nV434l8oEb1FfE";
+    const chatId = "6488147554";
+    const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+    fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        chat_id: "7870847386",
+        chat_id: chatId,
         text: text
       })
-    }).then(() => {
+    })
+    .then(() => {
       alert("메시지가 전송되었습니다.");
-      document.getElementById("userMessage").value = "";
-      document.getElementById("country").value = "";
-      document.getElementById("monthlyVolume").value = "";
-      document.getElementById("contentType").value = "";
-    }).catch(() => alert("전송 실패"));
+      document.getElementById("contact-form").reset();
+    })
+    .catch(() => {
+      alert("전송 실패. 텔레그램 봇 토큰 또는 chat_id를 다시 확인해보세요.");
+    });
   });
 </script>
 </body>
